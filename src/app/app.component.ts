@@ -15,8 +15,9 @@ declare var go: any;
 })
 export class AppComponent implements AfterViewInit {
     title = 'My App Works !!!! Hurray !!!!';
+     @ViewChild('myPaletteDiv') divPallette;
     @ViewChild('myDiagramDiv') div;
-    @ViewChild('myPaletteDiv') divPallette;
+   
 
     ngAfterViewInit() {
 
@@ -73,18 +74,18 @@ export class AppComponent implements AfterViewInit {
                     fill: "lightblue",
                     stroke: "deepskyblue"
                 }),
-                rotatingTool: $(TopRotatingTool),
-                "rotatingTool.snapAngleMultiple": 15,
-                "rotatingTool.snapAngleEpsilon": 15,
+                //rotatingTool: $(TopRotatingTool),
+                //"rotatingTool.snapAngleMultiple": 15,
+                //"rotatingTool.snapAngleEpsilon": 15,
                 "undoManager.isEnabled": true
             });
 
      
-        myDiagram.addDiagramListener =
+           /* myDiagram.addDiagramListener =
             $("Modified", function(e : Event) {
                 var el: HTMLElement = document.getElementById('SaveButton');
                 var button = el;
-            });
+            });*/
 
        function makePort(name: string, spot: any, output: boolean, input: boolean) {
             // the port is basically just a small transparent square
@@ -251,7 +252,7 @@ export class AppComponent implements AfterViewInit {
                 }
             );
 
-        function showSmallPorts(node,show) {
+        function showSmallPorts(show,node) {
               node.ports.each(function(port) {
               if (port.portId !== "") {  // don't change the default port, which is the big shape
                     port.fill = show ? "rgba(0,0,0,.3)" : null;
@@ -439,5 +440,4 @@ export class AppComponent implements AfterViewInit {
             if (pos) myDiagram.initialPosition = go.Point.parse(pos);
         }
     }
-
 }
